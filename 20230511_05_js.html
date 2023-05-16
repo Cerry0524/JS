@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>計算機</title>
+    <style>
+        * {
+            font-family: "MS UI Gothic";
+        }
+
+        table {
+            border: 3px solid black;
+            box-shadow: 2px 2px 8px black;
+            background: linear-gradient(90deg, darkblue, rgb(0, 11, 109));
+        }
+
+        tr,
+        td {
+            width: 40px;
+            height: 40px;
+        }
+
+        .buttom {
+            background-color: rgb(29, 8, 94);
+            box-shadow: 2px 2px 2px #ccc;
+            border: 0.5px solid rgb(67, 67, 68);
+            text-align: center;
+            font-size: 36px;
+            text-shadow: -1px -1px 1px black inset;
+            color: #ebe9e9;
+            font-weight: bolder;
+
+        }
+        
+
+        .led {
+            height: 60px;
+            background-color: dimgrey;
+            color: rgb(0, 0, 0);
+            font-size: 45px;
+            font-family: "Trajan Pro";
+            box-shadow: 3px 3px 3px black inset;
+            text-align: right;
+            font-weight: bolder;
+            font-stretch: extra-expanded;
+        }
+
+        #ledSub {
+            height: 30px;
+            font-size: 24px;
+            padding-top: 5px;
+        }
+
+        #btnAdd- {
+            font-size: 22px;
+        }
+    </style>
+
+<body>
+    <table>
+        <tr>
+            <td colspan="9"></td>
+            <!-- 
+            <td></td>2
+            <td></td>3
+            <td></td>4
+            <td></td>5
+            <td></td>6
+            <td></td>7
+            <td></td>8
+            <td></td>9
+            -->
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="7" class="led">
+                <div id="ledSub"></div>
+                <div id="ledMain">0</div>
+            </td>
+            <!-- 
+            <td></td>3
+            <td></td>4
+            <td></td>5
+            <td></td>6
+            <td></td>7
+            <td></td>8 
+            -->
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="9"></td>
+            <!-- 
+            <td></td>2
+            <td></td>3
+            <td></td>4
+            <td></td>5
+            <td></td>6
+            <td></td>7
+            <td></td>8
+            <td></td>9
+            -->
+        </tr>
+        <tr>
+            <td></td>
+            <td class="buttom" id="btn7" onclick="inputFun('7')">7</td>
+            <td></td>
+            <td class="buttom" id="btn8" onclick="inputFun('8')">8</td>
+            <td></td>
+            <td class="buttom" id="btn9" onclick="inputFun('9')">9</td>
+            <td></td>
+            <td class="buttom" id="btnAdd" onclick="inputFun('+')">+</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="9"></td>
+            <!-- 
+            <td></td>2
+            <td></td>3
+            <td></td>4
+            <td></td>5
+            <td></td>6
+            <td></td>7
+            <td></td>8
+            <td></td>9
+            -->
+        </tr>
+        <tr>
+            <td></td>
+            <td class="buttom" id="btn4" onclick="inputFun('4')">4</td>
+            <td></td>
+            <td class="buttom" id="btn5" onclick="inputFun('5')">5</td>
+            <td></td>
+            <td class="buttom" id="btn6" onclick="inputFun('6')">6</td>
+            <td></td>
+            <td class="buttom" id="btnSub" onclick="inputFun('-')">-</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="9"></td>
+            <!-- 
+            <td></td>2
+            <td></td>3
+            <td></td>4
+            <td></td>5
+            <td></td>6
+            <td></td>7
+            <td></td>8
+            <td></td>9
+            -->
+        </tr>
+        <tr>
+            <td></td>
+            <td class="buttom" id="btn1" onclick="inputFun('1')">1</td>
+            <td></td>
+            <td class="buttom" id="btn2" onclick="inputFun('2')">2</td>
+            <td></td>
+            <td class="buttom" id="btn3" onclick="inputFun('3')">3</td>
+            <td></td>
+            <td class="buttom" id="btnMul" onclick="inputFun('*')">*</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="9"></td>
+            <!-- 
+            <td></td>2
+            <td></td>3
+            <td></td>4
+            <td></td>5
+            <td></td>6
+            <td></td>7
+            <td></td>8
+            <td></td>9
+            -->
+        </tr>
+        <tr>
+            <td></td>
+            <td class="buttom" id="btnAdd-" onclick="inputFun('+-')">+/-</td>
+            <td></td>
+            <td class="buttom" id="btn0" onclick="inputFun('0')">0</td>
+            <td></td>
+            <td class="buttom" id="btnPoint" onclick="inputFun('.')">.</td>
+            <td></td>
+            <td class="buttom" id="btnDiv" onclick="inputFun('/')">/</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="9"></td>
+            <!-- 
+            <td></td>2
+            <td></td>3
+            <td></td>4
+            <td></td>5
+            <td></td>6
+            <td></td>7
+            <td></td>8
+            <td></td>9
+            -->
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="3" class="buttom" id="btnAC" onclick="inputFun('AC')">A/C</td>
+            <!-- 
+            <td>2</td>
+            <td>3</td>
+            -->
+            <td></td>
+            <td colspan="3" class="buttom" id="btnEqual" onclick="inputFun('=')">=</td>
+            <!-- 
+            <td>7</td>
+            <td>8</td> 
+            -->
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="9"></td>
+            <!-- 
+            <td></td>2
+            <td></td>3
+            <td></td>4
+            <td></td>5
+            <td></td>6
+            <td></td>7
+            <td></td>8
+            <td></td>9
+            -->
+        </tr>
+        <script>
+            let btn1 = document.getElementById('btn1');
+            let btn2 = document.getElementById('btn2');
+            let btn3 = document.getElementById('btn3');
+            let btn4 = document.getElementById('btn4');
+            let btn5 = document.getElementById('btn5');
+            let btn6 = document.getElementById('btn6');
+            let btn7 = document.getElementById('btn7');
+            let btn8 = document.getElementById('btn8');
+            let btn9 = document.getElementById('btn9');
+            let btn0 = document.getElementById('btn0');
+            let btnAdd = document.getElementById('btnAdd');
+            let btnSub = document.getElementById('btnSub');
+            let btnMul = document.getElementById('btnMul');
+            let btnDiv = document.getElementById('btnDiv');
+            let btnPoint = document.getElementById('btnPoint');
+            let btnAC = document.getElementById('btnAC');
+            let btnEqual = document.getElementById('btnEqual');
+            let ledMain = document.getElementById('ledMain');
+            let ledSub = document.getElementById('ledSub');
+            let calSum = "";    //ledMain計算使用
+            let calSub = "";    //ledSub顯示使用
+            let calSubNum1 = 0;//ledSub顯示使用
+            let calSubNum2 = 0;//ledSub顯示使用
+            let calTmp = "";    //ledSub顯示運算子
+
+
+            function inputFun(input) {
+                    if (input >= 0 && input <= 9 || input == ".") {
+                        //輸入數字或小數點時
+                        calSum += input;
+                        switch (calTmp) {
+                            // 驗證運算子
+
+                            case "+"://加法
+                                ledSub.innerHTML = calSubNum1 + "+";
+                                break;
+                            case "-"://減法
+                                ledSub.innerHTML = calSubNum1 + "-";
+                                break;
+                            case "*"://乘法
+                                ledSub.innerHTML = calSubNum1 + "*";
+                                break;
+                            case "/"://除法
+                                ledSub.innerHTML = calSubNum1 + "/";
+                                break;
+                            default:
+                                ledMain.innerHTML = "請正確輸入運算元";
+                                break;
+
+                        }
+                        ledMain.innerHTML = calSum;
+
+                    } else if (input == "+" || input == "-" || input == "*" || input == "/") {
+                        // 輸入四元運算子時
+
+                        calTmp = input;
+                        calSubNum1 = calSum;
+
+                        switch (calTmp) {
+                            // 驗證運算子
+
+                            case "+"://加法
+                                ledSub.innerHTML = calSubNum1 + "+";
+                                break;
+                            case "-"://減法
+                                ledSub.innerHTML = calSubNum1 + "-";
+                                break;
+                            case "*"://乘法
+                                ledSub.innerHTML = calSubNum1 + "*";
+                                break;
+                            case "/"://除法
+                                ledSub.innerHTML = calSubNum1 + "/";
+                                break;
+                            default:
+                                ledMain.innerHTML = "請正確輸入運算元";
+                                break;
+
+                        }
+                        calSum = "";
+                    } else if (input == "=") {
+                        // 輸入Enter時
+
+                        calSubNum2 = calSum;
+
+                        switch (calTmp) {
+                            // 驗證運算子
+
+                            case "+"://加法
+                                calSub = calSubNum1 + "+" + calSubNum2 + "=";
+                                ledSub.innerHTML = calSub;
+                                calSum = Number(calSubNum1) + Number(calSubNum2);
+                                ledMain.innerHTML = calSum;
+                                break;
+                            case "-"://減法
+                                calSub = calSubNum1 + "-" + calSubNum2 + "=";
+                                ledSub.innerHTML = calSub;
+                                calSum = Number(calSubNum1) - Number(calSubNum2);
+                                ledMain.innerHTML = calSum;
+                                break;
+                            case "*"://乘法
+                                calSub = calSubNum1 + "*" + calSubNum2 + "=";
+                                ledSub.innerHTML = calSub;
+                                calSum = Number(calSubNum1) * Number(calSubNum2);
+                                ledMain.innerHTML = calSum;
+                                break;
+                            case "/"://除法
+                                calSub = calSubNum1 + "/" + calSubNum2 + "=";
+                                ledSub.innerHTML = calSub;
+                                calSum = Number(calSubNum1) / Number(calSubNum2);
+                                ledMain.innerHTML = calSum;
+                                break;
+
+                            default:
+                                ledMain.innerHTML = "請正確輸入運算元";
+                                break;
+
+                        }
+                        calSubNum1 = calSum;
+                        // calSum = "";
+                        calTmp = "";
+                    } else if (input == "AC") {
+                        calSum = "";
+                        calSubNum1 = 0;
+                        calSubNum2 = 0;
+                        calTmp = "";
+                        ledMain.innerHTML = "0";
+                        ledSub.innerHTML = "";
+                    } else if (input == "+-") {
+                        calSum = -Number(calSum);
+                        ledMain.innerHTML = calSum;
+                        ledSub.innerHTML = calSub;
+                    }
+                };
+
+            document.addEventListener('keydown', (event) => {
+
+
+                if (event.key >= 0 && event.key <= 9 || event.key == ".") {
+                    //輸入數字或小數點時
+                    calSum += event.key;
+                    switch (calTmp) {
+                        // 驗證運算子
+
+                        case "+"://加法
+                            ledSub.innerHTML = calSubNum1 + "+";
+                            break;
+                        case "-"://減法
+                            ledSub.innerHTML = calSubNum1 + "-";
+                            break;
+                        case "*"://乘法
+                            ledSub.innerHTML = calSubNum1 + "*";
+                            break;
+                        case "/"://除法
+                            ledSub.innerHTML = calSubNum1 + "/";
+                            break;
+                        default:
+                            ledMain.innerHTML = "請正確輸入運算元";
+                            break;
+
+                    }
+                    ledMain.innerHTML = calSum;
+
+                } else if (event.key == "+" || event.key == "-" || event.key == "*" || event.key == "/") {
+                    // 輸入四元運算子時
+
+                    calTmp = event.key;
+                    calSubNum1 = calSum;
+
+                    switch (calTmp) {
+                        // 驗證運算子
+
+                        case "+"://加法
+                            ledSub.innerHTML = calSubNum1 + "+";
+                            break;
+                        case "-"://減法
+                            ledSub.innerHTML = calSubNum1 + "-";
+                            break;
+                        case "*"://乘法
+                            ledSub.innerHTML = calSubNum1 + "*";
+                            break;
+                        case "/"://除法
+                            ledSub.innerHTML = calSubNum1 + "/";
+                            break;
+                        default:
+                            ledMain.innerHTML = "請正確輸入運算元";
+                            break;
+
+                    }
+                    calSum = "";
+                } else if (event.key == "Enter") {
+                    // 輸入Enter時
+
+                    calSubNum2 = calSum;
+
+                    switch (calTmp) {
+                        // 驗證運算子
+
+                        case "+"://加法
+                            calSub = calSubNum1 + "+" + calSubNum2 + "=";
+                            ledSub.innerHTML = calSub;
+                            calSum = Number(calSubNum1) + Number(calSubNum2);
+                            ledMain.innerHTML = calSum;
+                            break;
+                        case "-"://減法
+                            calSub = calSubNum1 + "-" + calSubNum2 + "=";
+                            ledSub.innerHTML = calSub;
+                            calSum = Number(calSubNum1) - Number(calSubNum2);
+                            ledMain.innerHTML = calSum;
+                            break;
+                        case "*"://乘法
+                            calSub = calSubNum1 + "*" + calSubNum2 + "=";
+                            ledSub.innerHTML = calSub;
+                            calSum = Number(calSubNum1) * Number(calSubNum2);
+                            ledMain.innerHTML = calSum;
+                            break;
+                        case "/"://除法
+                            calSub = calSubNum1 + "/" + calSubNum2 + "=";
+                            ledSub.innerHTML = calSub;
+                            calSum = Number(calSubNum1) / Number(calSubNum2);
+                            ledMain.innerHTML = calSum;
+                            break;
+
+                        default:
+                            ledMain.innerHTML = "請正確輸入運算元";
+                            break;
+
+                    }
+                    calSubNum1 = calSum;
+                    // calSum = "";
+                    calTmp = "";
+                } else if (event.key == "Backspace") {
+                    calSum = "";
+                    calSubNum1 = 0;
+                    calSubNum2 = 0;
+                    calTmp = "";
+                    ledMain.innerHTML = "0";
+                    ledSub.innerHTML = "";
+                } else if (event.key == "Control") {
+                    calSum = -Number(calSum);
+                    ledMain.innerHTML = calSum;
+                    ledSub.innerHTML = calSub;
+                }
+            }
+
+
+            );
+
+
+
+        </script>
+    </table>
+</body>
+
+</html>
