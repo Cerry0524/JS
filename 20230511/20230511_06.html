@@ -253,7 +253,18 @@
             let calSubNum2 = 0;//ledSub顯示使用
             let calTmp = "";    //ledSub顯示運算子
 
-            function inputFun(input) {
+            
+            function inputFun(iclick) {    //滑鼠點擊
+                cal(iclick);
+            };
+
+            document.addEventListener('keydown', (event) => {     //鍵盤輸入
+                let eventkey=event.key;
+                cal(eventkey);  
+            });
+
+            
+            function cal(input) {
                 if (input >= 0 && input <= 9 || input == ".") {
                     //輸入數字或小數點時
                     calSum += input;
@@ -277,7 +288,7 @@
                     ledSub.innerHTML = calSubNum1 + calTmp;
 
                     calSum = "";
-                } else if (input == "=") {
+                } else if (input == "=" || input == "Enter") {
                     // 輸入Enter時
 
                     if (calTmp == "") {
@@ -341,81 +352,7 @@
                 }
             };
 
-            document.addEventListener('keydown', (event) => {
-
-
-                if (event.key >= 0 && event.key <= 9 || event.key == ".") {
-                    //輸入數字或小數點時
-                    calSum += event.key;
-                    ledSub.innerHTML = calSubNum1 + calTmp;
-                    ledMain.innerHTML = calSum;
-
-                } else if (event.key == "+" || event.key == "-" || event.key == "*" || event.key == "/") {
-                    // 輸入四元運算子時
-
-                    calTmp = event.key;
-                    calSubNum1 = calSum;
-                    ledSub.innerHTML = calSubNum1 + calTmp;
-                    calSum = "";
-                } else if (event.key == "Enter") {
-                    // 輸入Enter時
-
-                    calSubNum2 = calSum;
-
-                    switch (calTmp) {
-                        // 驗證運算子
-
-                        case "+"://加法
-                            calSub = calSubNum1 + "+" + calSubNum2 + "=";
-                            ledSub.innerHTML = calSub;
-                            calSum = Number(calSubNum1) + Number(calSubNum2);
-                            ledMain.innerHTML = calSum;
-                            break;
-                        case "-"://減法
-                            calSub = calSubNum1 + "-" + calSubNum2 + "=";
-                            ledSub.innerHTML = calSub;
-                            calSum = Number(calSubNum1) - Number(calSubNum2);
-                            ledMain.innerHTML = calSum;
-                            break;
-                        case "*"://乘法
-                            calSub = calSubNum1 + "*" + calSubNum2 + "=";
-                            ledSub.innerHTML = calSub;
-                            calSum = Number(calSubNum1) * Number(calSubNum2);
-                            ledMain.innerHTML = calSum;
-                            break;
-                        case "/"://除法
-                            calSub = calSubNum1 + "/" + calSubNum2 + "=";
-                            ledSub.innerHTML = calSub;
-                            calSum = Number(calSubNum1) / Number(calSubNum2);
-                            ledMain.innerHTML = calSum;
-                            break;
-
-                        default:
-                            ledMain.innerHTML = "請正確輸入運算元";
-                            break;
-
-                    }
-                    calSubNum1 = calSum;
-                    // calSum = "";
-                    calTmp = "";
-                } else if (event.key == "Backspace") {
-                    calSum = "";
-                    calSubNum1 = 0;
-                    calSubNum2 = 0;
-                    calTmp = "";
-                    ledMain.innerHTML = "0";
-                    ledSub.innerHTML = "";
-                } else if (event.key == "Control") {
-                    calSum = -Number(calSum);
-                    ledMain.innerHTML = calSum;
-                    ledSub.innerHTML = calSub;
-                }
-            }
-
-
-            );
-
-
+            
 
         </script>
     </table>
